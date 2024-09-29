@@ -1,16 +1,19 @@
+import allure
 import requests
 
-from config import BaseConfig as b
 from data.data_orders import Orders as order
 
 
 class TestGetOrder:
-    def test_get_user_orders_with_auth(self):
-        response = requests.get(url=order.url, headers={"authorization": b.authorization})
+    @allure.title("Получаем заказы авторизованного пользователя")
+    def test_get_user_orders_with_auth(self, get_jwt):
+        jwt = get_jwt
+        response = requests.get(url=order.url, headers={"authorization": jwt})
 
         json = response.json()
-        assert response.status_code == 200 and len(json["orders"]) > 1
+        assert response.status_code == 200 and len(json["orders"]) > 0
 
+    @allure.title("Пробуем получить заказы без авторизации")
     def test_get_user_orders_without_auth(self):
         response = requests.get(url=order.url)
 

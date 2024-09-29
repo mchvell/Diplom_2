@@ -6,8 +6,8 @@ class Login:
     url = b.base_url + method
 
     existing_user = {
-        'email': 'anzhela51@example.net',
-        'password': '&1mQaWEa&6'
+        'email': 'gubanov12qa@yandex.ru',
+        'password': 'fRodoAndBilbo'
     }
 
     not_existing_user = {

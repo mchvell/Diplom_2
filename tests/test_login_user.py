@@ -6,13 +6,13 @@ from data.data_login import Login as log
 
 class TestCreateUser:
 
-    @allure.description("Авторизация юзера с валидными креденшиалс")
+    @allure.title("Авторизация юзера с валидными креденшиалс")
     def test_login_with_existing_user(self):
         response = requests.post(url=log.url, data=log.existing_user)
         json = response.json()
         assert response.status_code == 200 and json["success"] is True
 
-    @allure.description("Авторизация не существующего юзера")
+    @allure.title("Авторизация не существующего юзера")
     def test_login_with_not_existing_user(self):
         response = requests.post(url=log.url, data=log.not_existing_user)
         json = response.json()
